@@ -1,30 +1,39 @@
-import { ArrowRightIcon, BarChart3Icon, CheckCircle2Icon, HelpCircleIcon } from 'lucide-react'
-import { Link } from 'react-router'
+import {
+  ArrowRightIcon,
+  BarChart3Icon,
+  CheckCircle2Icon,
+  HelpCircleIcon,
+} from "lucide-react";
+import { Link } from "react-router";
 
-import { buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from "@/components/ui/button";
+import HomeFooter from "@/components/shared/Footer";
+import HomeHeader from "@/components/shared/Header";
 
 const highlights = [
-  { label: 'UI base', value: 'shadcn + Tailwind' },
-  { label: 'Data layer', value: 'React Query' },
-  { label: 'Rutas', value: 'React Router' },
-]
+  { label: "UI base", value: "shadcn + Tailwind" },
+  { label: "Data layer", value: "React Query" },
+  { label: "Rutas", value: "React Router" },
+];
 
 const metrics = [
-  { label: 'Ventas', value: '$12.4k', delta: '+18%' },
-  { label: 'Usuarios', value: '1,284', delta: '+6.4%' },
-  { label: 'Pedidos', value: '392', delta: '+12%' },
-  { label: 'Conversión', value: '4.8%', delta: '+0.7%' },
-]
+  { label: "Ventas", value: "$12.4k", delta: "+18%" },
+  { label: "Usuarios", value: "1,284", delta: "+6.4%" },
+  { label: "Pedidos", value: "392", delta: "+12%" },
+  { label: "Conversión", value: "4.8%", delta: "+0.7%" },
+];
 
 function Home() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.08),_transparent_40%),linear-gradient(180deg,_#fafafa_0%,_#f3f4f6_100%)] px-6 py-10 text-foreground">
-      <div className="mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-6xl items-center">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.08),_transparent_40%),linear-gradient(180deg,_#fafafa_0%,_#f3f4f6_100%)] px-6 py-6 text-foreground sm:py-8">
+      <HomeHeader />
+
+      <div className="mx-auto flex min-h-[calc(100vh-18rem)] w-full max-w-6xl items-center py-6 sm:py-8">
         <section className="grid w-full gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border bg-white/80 px-4 py-2 text-sm shadow-sm backdrop-blur">
               <CheckCircle2Icon className="size-4" />
-              Base inicial lista para crecer
+              Arquitectura optimizada para producción
             </div>
 
             <div className="space-y-4">
@@ -32,23 +41,23 @@ function Home() {
                 Un dashboard limpio, listo para conectar datos reales.
               </h1>
               <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-                Ya tienes shadcn, Tailwind, React Query y el alias de rutas bien
-                configurados. Ahora la app arranca con una base visual clara para
-                construir métricas, tablas y vistas operativas.
+                Visualiza métricas en tiempo real, organiza tus datos y toma
+                decisiones con una interfaz optimizada para rendimiento y
+                productividad.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Link to="/dashboard" className={buttonVariants({ size: 'lg' })}>
+              <Link to="/dashboard" className={buttonVariants({ size: "lg" })}>
                 Empezar
                 <ArrowRightIcon />
               </Link>
               <Link
                 to="/dashboard"
-                className={buttonVariants({ variant: 'outline', size: 'lg' })}
+                className={buttonVariants({ variant: "outline", size: "lg" })}
               >
                 <HelpCircleIcon />
-                Ver ayuda
+                Documentación
               </Link>
             </div>
 
@@ -76,7 +85,10 @@ function Home() {
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {metrics.map((item) => (
-                <article key={item.label} className="rounded-2xl bg-muted/50 p-4">
+                <article
+                  key={item.label}
+                  className="rounded-2xl bg-muted/50 p-4"
+                >
                   <p className="text-sm text-muted-foreground">{item.label}</p>
                   <div className="mt-3 flex items-end justify-between gap-4">
                     <p className="text-2xl font-semibold">{item.value}</p>
@@ -90,8 +102,10 @@ function Home() {
           </aside>
         </section>
       </div>
+
+      <HomeFooter />
     </main>
-  )
+  );
 }
 
-export default Home
+export default Home;
