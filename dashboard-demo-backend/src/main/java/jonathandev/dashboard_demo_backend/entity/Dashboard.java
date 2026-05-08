@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -59,12 +61,15 @@ public class Dashboard {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "dashboard", fetch = FetchType.LAZY)
     private List<Widget> widgets = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "dashboard", fetch = FetchType.LAZY)
     private List<DashboardMember> members = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "dashboard", fetch = FetchType.LAZY)
     private List<DashboardInvite> invites = new ArrayList<>();
 }

@@ -15,4 +15,6 @@ public interface DashboardInviteRepository extends JpaRepository<DashboardInvite
     List<DashboardInvite> findByStatus(DashboardInviteStatus status);
 
     List<DashboardInvite> findByEmailIgnoreCase(String email);
+
+    java.util.Optional<DashboardInvite> findByToken(String token);
 }
