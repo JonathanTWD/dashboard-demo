@@ -1,7 +1,7 @@
 function HomeFooter() {
   return (
     <footer className="mx-auto w-full max-w-6xl pt-8">
-      <div className="flex flex-col gap-3 rounded-[1.75rem] border bg-white/70 px-5 py-4 text-sm text-muted-foreground shadow-sm backdrop-blur sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 rounded-[1.75rem] border border-border bg-background/70 px-5 py-4 text-sm text-muted-foreground shadow-sm backdrop-blur sm:flex-row sm:items-center sm:justify-between">
         <p>JonathanMoreraDev</p>
 
         <div className="flex items-center gap-3 self-start sm:self-auto">
@@ -10,7 +10,7 @@ function HomeFooter() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="inline-flex size-10 items-center justify-center rounded-full border bg-white text-foreground transition-colors hover:bg-muted"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-muted"
           >
             <svg
               viewBox="0 0 24 24"
@@ -31,7 +31,7 @@ function HomeFooter() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="inline-flex size-10 items-center justify-center rounded-full border bg-white text-foreground transition-colors hover:bg-muted"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-muted"
           >
             <svg
               viewBox="0 0 24 24"
