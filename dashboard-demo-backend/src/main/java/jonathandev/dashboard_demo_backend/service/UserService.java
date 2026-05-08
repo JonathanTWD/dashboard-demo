@@ -3,6 +3,7 @@ package jonathandev.dashboard_demo_backend.service;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -17,20 +18,22 @@ import jonathandev.dashboard_demo_backend.repository.AppUserRepository;
 public class UserService {
 
     private final AppUserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(AppUserRepository userRepository) {
+    public UserService(AppUserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public AppUser create(CreateUserRequest request) {
-        if (userRepository.findByEmail(request.email()).isPresent()) {
+        if (userRepository.findByEmailIgnoreCase(request.email()).isPresent()) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exists");
         }
 
         AppUser user = new AppUser();
         user.setName(request.name());
         user.setEmail(request.email());
-        user.setPasswordHash(request.passwordHash());
+        user.setPasswordHash(passwordEncoder.encode(request.passwordHash()));
         user.setRole(request.role() != null ? request.role() : "USER");
         return userRepository.save(user);
     }
@@ -50,7 +53,7 @@ public class UserService {
         AppUser user = findById(id);
 
         if (request.email() != null && !request.email().equalsIgnoreCase(user.getEmail())) {
-            userRepository.findByEmail(request.email()).ifPresent(existing -> {
+            userRepository.findByEmailIgnoreCase(request.email()).ifPresent(existing -> {
                 if (!existing.getId().equals(id)) {
                     throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exists");
                 }
@@ -62,7 +65,7 @@ public class UserService {
             user.setName(request.name());
         }
         if (request.passwordHash() != null) {
-            user.setPasswordHash(request.passwordHash());
+            user.setPasswordHash(passwordEncoder.encode(request.passwordHash()));
         }
         if (request.role() != null) {
             user.setRole(request.role());
