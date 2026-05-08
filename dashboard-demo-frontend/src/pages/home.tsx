@@ -25,13 +25,13 @@ const metrics = [
 
 function Home() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.08),_transparent_40%),linear-gradient(180deg,_#fafafa_0%,_#f3f4f6_100%)] px-6 py-6 text-foreground sm:py-8">
+    <main className="min-h-screen bg-background px-6 py-6 text-foreground sm:py-8">
       <HomeHeader />
 
       <div className="mx-auto flex min-h-[calc(100vh-18rem)] w-full max-w-6xl items-center py-6 sm:py-8">
         <section className="grid w-full gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border bg-white/80 px-4 py-2 text-sm shadow-sm backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm shadow-sm backdrop-blur">
               <CheckCircle2Icon className="size-4" />
               Arquitectura optimizada para producción
             </div>
@@ -65,7 +65,7 @@ function Home() {
               {highlights.map((item) => (
                 <article
                   key={item.label}
-                  className="rounded-2xl border bg-white/80 p-4 shadow-sm backdrop-blur"
+                  className="rounded-2xl border border-border bg-background/80 p-4 shadow-sm backdrop-blur"
                 >
                   <p className="text-sm text-muted-foreground">{item.label}</p>
                   <p className="mt-1 font-medium">{item.value}</p>
@@ -74,7 +74,7 @@ function Home() {
             </div>
           </div>
 
-          <aside className="rounded-[2rem] border bg-white/85 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur">
+          <aside className="rounded-[2rem] border border-border bg-background/85 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur">
             <div className="flex items-center justify-between border-b pb-4">
               <div>
                 <p className="text-sm text-muted-foreground">Vista previa</p>

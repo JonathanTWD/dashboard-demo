@@ -1,7 +1,7 @@
-import { ArrowLeftIcon, GaugeIcon } from 'lucide-react'
-import { Link } from 'react-router'
+import { ArrowLeftIcon, GaugeIcon } from "lucide-react";
+import { Link } from "react-router";
 
-import { buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from "@/components/ui/button";
 
 function Dashboard() {
   return (
@@ -19,9 +19,9 @@ function Dashboard() {
 
         <section className="grid gap-4 rounded-[2rem] border bg-muted/20 p-6 shadow-sm sm:grid-cols-3">
           {[
-            ['Estado', 'Listo para conectar datos'],
-            ['Router', 'React Router v7'],
-            ['Data', 'React Query activo'],
+            ["Estado", "Listo para conectar datos"],
+            ["Router", "React Router v7"],
+            ["Data", "React Query activo"],
           ].map(([label, value]) => (
             <article key={label} className="rounded-2xl bg-background p-4">
               <p className="text-sm text-muted-foreground">{label}</p>
@@ -31,14 +31,14 @@ function Dashboard() {
         </section>
 
         <div>
-          <Link to="/" className={buttonVariants({ variant: 'outline' })}>
+          <Link to="/" className={buttonVariants({ variant: "outline" })}>
             <ArrowLeftIcon />
             Volver al home
           </Link>
         </div>
       </div>
     </main>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
